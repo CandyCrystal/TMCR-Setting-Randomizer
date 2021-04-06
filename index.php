@@ -47,7 +47,6 @@ $rainbowHearts = selectOne();
 $tunicColor = randomRGB();
 $heartColor = randomRGB();
 $splitBarColor = randomRGB();
-$fireRod = selectOne();
 if ($keysanity == "") {
     $keasy = selectOne();
 } else {
@@ -79,35 +78,8 @@ function selectOne()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <title>TMCR setting randomizer</title>
-    <style>
-        body {
-            background-color: #333;
-            color: white;
-            font-family: roboto;
-        }
-
-        .colorTest {
-            height: 15px;
-            width: 80px;
-            margin: 0 auto;
-            border: 2px solid white;
-        }
-
-        h1 {
-            text-align: center;
-            background-color: rgb(red, green, blue);
-        }
-
-        p {
-            text-align: center;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -166,18 +138,17 @@ function selectOne()
             </th>
         </tr>
         <tr>
+            <th>Fuzziness: <?php echo $fuzzy ?></th>
+            <th>Follower: <?php echo $follower ?></th>
+        </tr>
+        <tr>
             <th>&nbsp</th>
         </tr>
         <tr>
             <th colspan="3">Extra - use these if you want, info on the discord!</th>
         </tr>
         <tr>
-            <td><input type="checkbox" <?php echo $fireRod ?>>FireRod</input></td>
             <td colspan="2"><input type="checkbox" <?php echo $keasy ?>>Keasy</input></td>
-        </tr>
-        <tr>
-            <th>Fuzziness: <?php echo $fuzzy ?></th>
-            <th>Follower: <?php echo $follower ?></th>
         </tr>
 
     </table>
