@@ -165,7 +165,7 @@
             figurineCount = 0;
             $extraFigurineCount = 0;
         }
-        if (!document.getElementById("keysanity").checked) {
+        if (document.getElementById("keysanity").checked == false) {
             boolSetting("keasy")
         }
     }
@@ -178,9 +178,7 @@
     }
 
     function boolSetting(name) {
-        console.log(name)
         var number = Math.random() < 0.5;
-        console.log(number)
         if (number == 1) {
             document.getElementById(name).checked = true;
         } else {
