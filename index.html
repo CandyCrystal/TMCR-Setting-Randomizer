@@ -118,7 +118,9 @@
 
     randomize()
 
+
     function randomize() {
+        document.getElementById("keasy").checked = false
         var fusions = Math.floor(Math.random() * fusionSettings.length);
         document.getElementById("fusions").innerHTML = fusionSettings[fusions]
         var pedSword = Math.floor(Math.random() * pedSwordSettings.length);
