@@ -1,190 +1,885 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./assets/css/main.css">
+		<title>TMCR setting randomizer</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <title>TMCR setting randomizer</title>
-</head>
+	<body>
+		<h1>Minish Cap Randomizer - setting randomizer</h1>
+		<p><button onclick="randomize()">All Rerandomize</button></p>
+		<table>
+			<tr>
+				<th colspan="2"><br>Main Settings - Dungeon Settings
+				<th><br><button onclick="randomizeMS_DS()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="MAP_SETTING">MAP_SETTING</td>
+				<td> </td>
+				<td id="COMPASS_SETTING">COMPASS_SETTING</td>
+			</tr>
+			<tr>
+				<td id="SMALL_KEYS_SETTING">SMALL_KEYS_SETTING</td>
+				<td> </td>
+				<td id="BIG_KEYS_SETTING">BIG_KEYS_SETTING</td>
+			</tr>
+			<tr>
+				<td id="SHUFFLE_ELEMENTS">SHUFFLE_ELEMENTS</td>
+				<td> </td>
+				<td id="DUNGEON">DUNGEON</td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Main Settings - Requirements</th>
+				<th><br><button onclick="randomizeMS_RE()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="DHC_SETTING">DHC_SETTING</td>
+				<td> </td>
+				<td id="REQUIREMENT_ITEM">REQUIREMENT_ITEM</td>
+			</tr>
+			<tr>
+				<td id="AD_PED">AD_PED</td>
+				<td> </td>
+				<td id="SWORD_SETTING">SWORD_SETTING</td>
+			</tr>
+			<tr>
+				<td id="ELEMENT_SETTING">ELEMENT_SETTING</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="FIGURINE_HUNT">Figurine Hunt</input>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td id="FIGURINE_TOTAL">FIGURINE_TOTAL</td>
+				<td> </td>
+				<td  id="FIGURINE_COUNT">FIGURINE_COUNT</td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Main Settings - Shuffle<br></th>
+				<th><br><button onclick="randomizeMS_SH()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td  id="DOJO">DOJO</td>
+				<td> </td>
+				<td  id="CUCCO_SETTING">CUCCO_SETTING</td>
+			</tr>
+			<tr>
+				<td  id="GORON_SETTING">GORON_SETTING</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="HEART_RANDO">Heart Pieces and Containers</input></td>
+				<td><input type="checkbox" id="RUPEEMANIA">Rupees</input></td>
+				<td><input type="checkbox" id="SPECIALPOTS">Special Pots</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="DIGGING">Dig spots</input></td>
+				<td><input type="checkbox" id="UNDERWATER">Underwater spots</input></td>
+				<td><input type="checkbox" id="GOLDEN_ENEMY">Golden Enemies</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="PED_ITEMS">Sanctuary Pedestal</input>
+				<td> </td>
+				<td> </td>
+			</td>
+			<tr>
+				<th colspan="2"><br>World Settings - Global<br></th>
+				<th><br><button onclick="randomizeWS_GL()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="OPENWORLD">OPENWORLD</td>
+				<td> </td>
+				<td id="ENTRANCES">ENTRANCES</td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>World Settings - Fusions<br></th>
+				<th><br><button onclick="randomizeWS_FU()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="GOLD_FUSION_SETTING">GOLD_FUSION_SETTING</td>
+				<td> </td>
+				<td id="RED_FUSION_SETTING">RED_FUSION_SETTING</td>
+			</tr>
+			<tr>
+				<td id="BLUE_FUSION_SETTING">BLUE_FUSION_SETTING</td>
+				<td> </td>
+				<td id="GREEN_FUSION_SETTING">GREEN_FUSION_SETTING</td>
+			</tr>
+			<tr>
+				<td id="FUSION_SKIPS">FUSION_SKIPS</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="SEEDED_SHARED">Order Shared Fusions</input></td>
+				<td><input type="checkbox" id="DEFICKLE">Defickle Fusers</input></td>
+				<td><input type="checkbox" id="SHOW_MAP">Always Show Map</input></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>World Settings - Speed Up</th>
+				<th><br><button onclick="randomizeWS_SU()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="OPEN_WIND_TRIBE">Wind Tribe Tower</input></td>
+				<td><input type="checkbox" id="OPEN_TINGLE">Tingle Brothers</input></td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>World Settings - Wind Crests</th>
+				<th><br><button onclick="randomizeWS_WC()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="CRENEL_CREST">Mt Crenel</input></td>
+				<td><input type="checkbox" id="FALLS_CREST">Veil Falls</input></td>
+				<td><input type="checkbox" id="CLOUD_CREST">Cloud Tops</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="TOWN_CREST">Hyrule Town</input></td>
+				<td><input type="checkbox" id="SWAMP_CREST">Swamp</input></td>
+				<td><input type="checkbox" id="SHF_CREST">Link's House</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="MINISH_CREST">Minish Woods</input></td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>World Settings - Dungeon Warps</th>
+				<th><br><button onclick="randomizeWS_DW()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="DWS_BLUEWARP">DWS Blue</input></td>
+				<td><input type="checkbox" id="DWS_REDWARP">DWS Red</input></td>
+				<td><input type="checkbox" id="COF_BLUEWARP">CoF Blue</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="COF_REDWARP">CoF Red</input></td>
+				<td><input type="checkbox" id="FOW_BLUEWARP">FoW Blue</input></td>
+				<td><input type="checkbox" id="FOW_REDWARP">FoW Red</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="TOD_BLUEWARP">ToD Blue</input></td>
+				<td><input type="checkbox" id="TOD_REDWARP">ToD Red</input></td>
+				<td><input type="checkbox" id="POW_BLUEWARP">PoW Blue</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="POW_REDWARP">PoW Red</input></td>
+				<td><input type="checkbox" id="DHC_BLUEWARP">DHC Blue</input></td>
+				<td><input type="checkbox" id="DHC_REDWARP">DHC Red</input></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Logic Settings - Logic Rules</th>
+				<th><br><button onclick="randomizeLS_LR()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="ACCESSIBILITY">ACCESSIBILITY</td>
+				<td> </td>
+				<td id="GRABBABLE">GRABBABLE</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="NO_LOGIC">No Logic</input></td>
+				<td></td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Logic Settings - Weapons</th>
+				<th><br><button onclick="randomizeLS_WE()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="BOMBWEAPON">BOMBWEAPON</td>
+				<td> </td>
+				<td id="BOWWEAPON">BOWWEAPON</td>
+			</tr>
+			<tr>
+				<td id="GUSTWEAPON">GUSTWEAPON</td>
+				<td> </td>
+				<td id="LAMPWEAPON">LAMPWEAPON</td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Logic Settings - Require Tricks</th>
+				<th><br><button onclick="randomizeLS_RT()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="MITTSMONEY_SETTING">MITTSMONEY_SETTING</td>
+				<td> </td>
+				<td id="GUARANTEED_BARLOV">GUARANTEED_BARLOV</td>
+			</tr>
+			<tr>
+				<td id="BLOWDUST_SETTING">BLOWDUST_SETTING</td>
+				<td> </td>
+				<td id="MUSHROOM_SETTING">MUSHROOM_SETTING</td>
+			</tr>
+			<tr>
+				<td id="ARROWBREAK_SETTING">ARROWBREAK_SETTING</td>
+				<td> </td>
+				<td id="BOBOMBS_SETTING">BOBOMBS_SETTING</td>
+			</tr>
+			<tr>
+				<td id="LIKELIKE_SETTING">LIKELIKE_SETTING</td>
+				<td> </td>
+				<td id="GUARDSKIP_SETTING">GUARDSKIP_SETTING</td>
+			</tr>
+			<tr>
+				<td id="CRENELBEAM_SETTING">CRENELBEAM_SETTING</td>
+				<td> </td>
+				<td id="DTBEETLE_SETTING">DTBEETLE_SETTING</td>
+			</tr>
+			<tr>
+				<td id="DARKROOMS_SETTING">DARKROOMS_SETTING</td>
+				<td> </td>
+				<td id="EXTENDCAPE_SETTING">EXTENDCAPE_SETTING</td>
+			</tr>
+			<tr>
+				<td id="LAKEMINISH_SETTING">LAKEMINISH_SETTING</td>
+				<td> </td>
+				<td id="CABINSWIM_SETTING">CABINSWIM_SETTING</td>
+			</tr>
+			<tr>
+				<td id="CLOUDSKILL_SETTING">CLOUDSKILL_SETTING</td>
+				<td> </td>
+				<td id="POWJUMP_SETTING">POWJUMP_SETTING</td>
+			</tr>
+			<tr>
+				<td id="POWPOTOOL_SETTING">POWPOTOOL_SETTING</td>
+				<td> </td>
+				<td id="DHCCANON_SETTING">DHCCANON_SETTING</td>
+			</tr>
+			<tr>
+				<td id="DHCJOSTLE_SETTING">DHCJOSTLE_SETTING</td>
+				<td> </td>
+				<td id="DHCSWITCHES_SETTING">DHCSWITCHES_SETTING</td>
+			</tr>
+			<tr>
+				<td id="FOWPOT_SETTING">FOWPOT_SETTING</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Item Pool - Global</th>
+				<th><br><button onclick="randomizeIP_GL()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="ITEM_POOL">ITEM_POOL</td>
+				<td> </td>
+				<td id="FIREROD">FIREROD</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="RANDOM_BOTTLE_CONTENT">Random Bottle Contents</input></td>
+				<td><input type="checkbox" id="TRAPS">Traps</input></td>
+				<td><input type="checkbox" id="MEME">Fun Junk</input></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Item Pool - Progressive</th>
+				<th><br><button onclick="randomizeIP_PR()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="YES_SWORD_PROG">Swords are Progressive</input></td>
+				<td><input type="checkbox" id="YES_BOW_PROG">Bows are Progressive</input></td>
+				<td><input type="checkbox" id="YES_BOOM_PROG">Boomerangs are Progressive</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="YES_SHIELD_PROG">Shields are Progressive</input></td>
+				<td><input type="checkbox" id="YES_SCROLL_PROG">Spin Scrolls are Progressive</input></td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Item Pool - Kinstone Packs</th>
+				<th><br><button onclick="randomizeIP_KP()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="GOLD1MULTIPLIER">GOLD1MULTIPLIER</td>
+				<td> </td>
+				<td id="GOLD2MULTIPLIER">GOLD2MULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="REDWMULTIPLIER">REDWMULTIPLIER</td>
+				<td> </td>
+				<td id="REDVMULTIPLIER">REDVMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="REDEMULTIPLIER">REDEMULTIPLIER</td>
+				<td> </td>
+				<td id="BLUELMULTIPLIER">BLUELMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="BLUESMULTIPLIER">BLUESMULTIPLIER</td>
+				<td> </td>
+				<td id="GREENCMULTIPLIER">GREENCMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="GREENGMULTIPLIER">GREENGMULTIPLIER</td>
+				<td> </td>
+				<td id="GREENPMULTIPLIER">GREENPMULTIPLIER</td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Item Pool - Key Chains</th>
+				<th><br><button onclick="randomizeIP_KC()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="KEYDWSMULTIPLIER">KEYDWSMULTIPLIER</td>
+				<td> </td>
+				<td id="KEYCOFMULTIPLIER">KEYCOFMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="KEYFOWMULTIPLIER">KEYFOWMULTIPLIER</td>
+				<td> </td>
+				<td id="KEYTODMULTIPLIER">KEYTODMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="KEYRCMULTIPLIER">KEYRCMULTIPLIER</td>
+				<td> </td>
+				<td id="KEYPOWMULTIPLIER">KEYPOWMULTIPLIER</td>
+			</tr>
+			<tr>
+				<td id="KEYDHCMULTIPLIER">KEYDHCMULTIPLIER</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Gameplay - Difficulty</th>
+				<th><br><button onclick="randomizeGA_DI()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="THREE_HEART">THREE_HEART</td>
+				<td> </td>
+				<td id="DAMAGE_MULTI">DAMAGE_MULTI</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="GLITCHLESS">Prevent Speedrun Glitches</input></td>
+				<td><input type="checkbox" id="TIMEDOHKO">Timed OHKO</input></td>
+				<td><input type="checkbox" id="SHY_FAIRIES">Shy Fairies</input></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Gameplay - Improvements</th>
+				<th><br><button onclick="randomizeGA_IM()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="BOOTS_L">BOOTS_L</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="INSTANT_TEXT">Instant Text</input></td>
+				<td><input type="checkbox" id="ITEM_HISTORY">Item Name Display</input></td>
+				<td><input type="checkbox" id="HOMEWARP">Homewarp</input></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="OCARINA_SELECT">Ocarina on Select</input></td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Gameplay - Extras</th>
+				<th><br><button onclick="randomizeGA_EX()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="GORON_ALT_PRICES">Goron Merchant JP/US prices</input></td>
+				<td><input type="checkbox" id="NO_KINSTONE_DROPS">Disable Kinstone Drops</input></td>
+				<td><input type="checkbox" id="NO_SHELL_DROPS">Disable Shell Drops</input></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Music & Sound Effects</th>
+				<th><br><button onclick="randomizeCO_MSE()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="MUSIC_SETTING">MUSIC_SETTING</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<td id="HEALTH_BEEP">HEALTH_BEEP</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Cosmetic</th>
+				<th><br><button onclick="randomizeCO_CO()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="RANDOM_LANGUAGE">Randomize language</input></td>
+				<td> </td>
+				<td> </td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Hearts</th>
+				<th><br><button onclick="randomizeCO_HE()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="RAINBOW_HEARTS">Rainbow Hearts</input></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="HeartColor"></td>
+				<td id="HeartColor2" ></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Hearts Outlines</th>
+				<th><br><button onclick="randomizeCO_HO()">Rerandomize</button></th>
+			</tr>
 
-<body>
-    <h1>Minish Cap Randomizer - setting randomizer</h1>
-    <p><button onclick="randomize()">Rerandomize</button></p>
-    <table>
-        <tr>
-            <td><input type="checkbox" id="keysanity">Keysanity</input>
-            </td>
-            <td><input type="checkbox" id="shuffleElements">Shuffle elements into item pool</input>
-            </td>
-            <td><input type="checkbox" id="disableGlitches">Disable glitches</input>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="obscureSpots">Obscure Spots</input>
-            </td>
-            <td><input type="checkbox" id="rupeemania">Add available rupees to pool</input>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3"><input type="checkbox" id="damagingItems">Damaging items other than sword seen as weapons
-                </input>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="traps">Shuffle traps in itempool</input>
-            </td>
-            <td><input type="checkbox" id="ohko">Die in one hit if timer runs out</input>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="randomMusic">Randomize music</input>
-            </td>
-            <td><input type="checkbox" id="figurineHunt">Shuffle figurines into item pool</input>
-            </td>
-        </tr>
-        <tr>
-            <th id="fusions"></th>
-            <th id="fusionSkips"></th>
-        </tr>
-        <tr>
-            <th id="pedSettings"></th>
-            <th id="requiredFigurines"></th>
-            <th id="extraFigurines"></th>
-        </tr>
-        <tr>
-            <th id="pedSword"></th>
-            <th id="pedElements"></th>
-        </tr>
-        <tr>
-            <th>&nbsp</th>
-        </tr>
-        <tr>
-            <th colspan="3">Gimmicks!</th>
-        </tr>
-        <tr>
-            <td><input type="checkbox" id="randomLanguage">Randomize language</input>
-            </td>
-            <td><input type="checkbox" id="rainbowHearts">Enable Rainbow Hearts</input>
-            </td>
-        </tr>
-        <tr>
-            <th id="tunicColor">
-                Change Tunic Color
-                <div class="colorTest" style="background-color: rgb(r, g, b);"></div>
-            </th>
-            <th id="heartColor">
-                Change Heart Color
-                <div class="colorTest" style="background-color: rgb(r, g, b);"></div>
-            </th>
-            <th id="splitBarColor">
-                Change Split Bar Color
-                <div class="colorTest" style="background-color: rgb(r, g, b);"></div>
-            </th>
-        </tr>
-        <tr>
-            <th id="fuzziness">Fuzziness:
-            </th>
-            <th id="follower">Follower:
-            </th>
-        </tr>
-        <tr>
-            <th>&nbsp</th>
-        </tr>
-        <tr>
-            <th colspan="3">Extra - use these if you want, info on the discord!</th>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="checkbox" id="keasy">Keasy</input>
-            </td>
-        </tr>
-
-    </table>
-</body>
-
+			<tr>
+				<td colspan="2" id="HeartOutlineColor"></td>
+				<td id="HeartOutlineColor2" ></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Tunic</th>
+				<th><br><button onclick="randomizeCO_TU()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td colspan="2" id="TunicColor"></td>
+				<td id="TunicColor2" ></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Split Bar</th>
+				<th><br><button onclick="randomizeCO_SB()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td colspan="2" id="SplitBarColor"></td>
+				<td id="SplitBarColor2" ></td>
+			</tr>
+			<tr>
+				<th colspan="2"><br>Cosmetics - Follower</th>
+				<th><br><button onclick="randomizeCO_FO()">Rerandomize</button></th>
+			</tr>
+			<tr>
+				<td id="FOLLOWER_SETTING">FOLLOWER_SETTING</td>
+				<td> </td>
+				<td> </td>
+			</tr>
+		</table>
+	</body>
 </html>
 <script>
-    var simpleSettings = ["keysanity", "shuffleElements", "disableGlitches", "obscureSpots", "rupeemania", "damagingItems", "traps", "ohko", "randomMusic", "figurineHunt", "randomLanguage", "rainbowHearts"];
-    var pedSettings = ["Ped Open/Regular DHC", "Ped Finish/No DHC", "Open DHC + Ped Items", "Open DHC"];
-    var pedSettingsFigurines = ["Ped Open/Regular DHC", "Ped Finish/No DHC"];
-    var pedSwordSettings = ["No Sword Ped", "Smith Sword Ped", "White Sword Ped", "Red Sword Ped", "Blue Sword Ped", "Four Sword Ped"];
+	var simpleSettingsMS_RE = ["FIGURINE_HUNT"];
+	var simpleSettingsMS_SH = ["HEART_RANDO","RUPEEMANIA","SPECIALPOTS","DIGGING","UNDERWATER","GOLDEN_ENEMY","PED_ITEMS"];
+	var simpleSettingsWS_FU = ["SEEDED_SHARED","DEFICKLE","SHOW_MAP"];
+	var simpleSettingsWS_SU = ["OPEN_WIND_TRIBE","OPEN_TINGLE"];
+	var simpleSettingsWS_WC = ["CRENEL_CREST","FALLS_CREST","CLOUD_CREST","TOWN_CREST","SWAMP_CREST","SHF_CREST","MINISH_CREST"];
+	var simpleSettingsWS_DW = ["DWS_BLUEWARP","DWS_REDWARP","COF_BLUEWARP","COF_REDWARP","FOW_BLUEWARP","FOW_REDWARP","TOD_BLUEWARP","TOD_REDWARP","POW_BLUEWARP","POW_REDWARP","DHC_BLUEWARP","DHC_REDWARP"];
+	var simpleSettingsLS_LR = ["NO_LOGIC"];	
+	var simpleSettingsIP_GL = ["RANDOM_BOTTLE_CONTENT","TRAPS","MEME"];
+	var simpleSettingsIP_PR = ["YES_SWORD_PROG","YES_BOW_PROG","YES_BOOM_PROG","YES_SHIELD_PROG","YES_SCROLL_PROG"];
+	var simpleSettingsGA_DI = ["GLITCHLESS","TIMEDOHKO","SHY_FAIRIES"];
+	var simpleSettingsGA_IM = ["INSTANT_TEXT","ITEM_HISTORY","HOMEWARP","OCARINA_SELECT"];
+	var simpleSettingsGA_EX = ["GORON_ALT_PRICES","NO_KINSTONE_DROPS","NO_SHELL_DROPS"];
+	var simpleSettingsCO_CO = ["RANDOM_LANGUAGE"];
+	var simpleSettingsCO_HE = ["RAINBOW_HEARTS"];
 
-    var pedElementsSettings = ["No Element Ped", "1 Element Ped", "2 Element Ped", "3 Element Ped", "4 Element Ped"];
-    var fusionSettings = ["No normal fusions", "Open fusion mode", "Vanilla Fusions"];
-    var followerSettings = ["No Follower", "Mailman Follower", "Zelda Follower", "Malon Follower", "Smith Follower", "King Gustaf Follower", "Cow Follower", "Goron Follower", "Anju Follower"];
+	var SettingsMapCompass = ["Start With","Vanilla","Own Dungeon","Own Region","Any Dungeon","Any Region","Anywhere (Keysanity)"];
+	var SettingsKey = ["Removed (Keasy)","Vanilla","Own Dungeon","Own Region","Any Dungeon","Any Region","Anywhere (Keysanity)"];
+	var SettingsShuffleElements = ["Vanilla","Dungeon Rewards","Anywhere"];
+	var SettingsNonElement = ["Standard","Unrequired","Barren","Regions Unrequired","Regions Barren"];
+	var SettingsDHC = ["Never Open", "After Requirements", "Always Open"];
+	var SettingsRequirementItem = ["Disabled","DHC Big Key","Random Item"];
+	var SettingsAd_ped = ["0","1","2","3","4","5","6"];
+	var SettingsElement = ["0","1","2","3","4"];
+	var SettingsSword = ["No Sword", "Smith Sword", "White Sword", "Red Sword", "Blue Sword", "Four Sword"];
+	var SettingsDojo = ["Vanilla Scrolls", "Randomized Scrolls","Any Item"];
+	var SettingsCucco = ["Nothing", "1 Round", "2 Rounds", "3 Rounds", "4 Rounds", "5 Rounds", "6 Rounds", "7 Rounds", "8 Rounds", "9 Rounds", "10 Rounds"];
+	var SettingsGoron = ["Nothing","1 Set","2 Sets","3 Sets","4 Sets","5 Sets"];
+	var SettingsOpenWorld = ["OpenWorld","Standard"];
+	var SettingsEntrance = ["Vanilla","Shuffled"];
+	var SettingsFusion = ["Removed (Closed)","Vanilla","Combined","Completed (Open)"];
+	var SettingsFusionSkip = ["Never","Choose","Always"];
+	var SettingsAccessibility = ["All Locations","All NonKeys","Only the Goal"];
+	var SettingsGrabbable = ["Not Allowed","Allowed","Require","Require Hard"];
+	var SettingsWeaponBoss = ["No","Yes","Yes + Bosses"];
+	var SettingsWeaponNoBoss = ["No","Yes"];
+	var SettingsTrick = ["No","Yes"];
+	var SettingsItemPool = ["Reduced (RIP)","Balanced","Plentiful"];
+	var SettingsFirerod = ["No Firerod","Shuffled","Start With"];
+	var SettingsTrick = ["No","Yes"];
+	var SettingsGold1Mult = ["1","2","3","4","5","6","Max"];
+	var SettingsGold2Mult = ["1","2","Max"];
+	var SettingsRedWMult = ["1","2","3","4","5","9","12","Max"];
+	var SettingsRedVMult = ["1","2","3","4","5","Max"];
+	var SettingsRedEMult = ["1","2","3","4","5","Max"];
+	var SettingsBlueLMult = ["1","2","3","4","5","9","Max"];
+	var SettingsBlueSMult = ["1","2","3","4","5","Max"];
+	var SettingsGreenCMult = ["1","2","3","4","5","10","20","Max"];
+	var SettingsGreenGMult = ["1","2","3","4","5","8","Max"];
+	var SettingsGreenPMult = ["1","2","3","4","5","8","Max"];
+	var SettingsKeyDWSMult = ["1","2","3","4"];
+	var SettingsKeyCOFMult = ["1","2"];
+	var SettingsKeyFOWMult = ["1","2","3","4"];
+	var SettingsKeyTODMult = ["1","2","3","4"];
+	var SettingsKeyRCMult = ["1","2","3"];
+	var SettingsKeyPOWMult = ["1","2","3","4","5","6"];
+	var SettingsKeyDHCMult = ["1","2","3","4","5"];
+	var SettingsBootsL = ["Disabled","Enabled","Enabled + Minish"];
+	var SettingsMusic = ["None","Vanilla","Shuffled"];
 
-    randomize()
+	var SettingsThreeHeart = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"];
+	var SettingsDamageMulti = ["1x","2x","3x","4x"];
 
+	var SettingsFollower = ["No Follower", "Mailman", "Zelda", "Malon", "Smith", "King Daltus", "Cow", "Goron", "Anju"];
 
-    function randomize() {
-        document.getElementById("keasy").checked = false
-        var fusions = Math.floor(Math.random() * fusionSettings.length);
-        document.getElementById("fusions").innerHTML = fusionSettings[fusions]
-        var pedSword = Math.floor(Math.random() * pedSwordSettings.length);
-        document.getElementById("pedSword").innerHTML = pedSwordSettings[pedSword]
-        var pedElement = Math.floor(Math.random() * pedElementsSettings.length);
-        document.getElementById("pedElements").innerHTML = pedElementsSettings[pedElement]
-        var fuzziness = 0;
-        document.getElementById("fuzziness").innerHTML = "Fuzziness: " + fuzziness
-        var follower = Math.floor(Math.random() * followerSettings.length);
-        document.getElementById("follower").innerHTML = "Follower: " + followerSettings[follower]
+	randomize()
+	function randomizeMS_DS() {
+		var MAP_SETTING = Math.floor(Math.random() * SettingsMapCompass.length);
+		document.getElementById("MAP_SETTING").innerHTML = "<u>Map:</u><br> " + SettingsMapCompass[MAP_SETTING];
+		
+		var COMPASS_SETTING = Math.floor(Math.random() * SettingsMapCompass.length);
+		document.getElementById("COMPASS_SETTING").innerHTML = "<u>Compass:</u><br> " + SettingsMapCompass[COMPASS_SETTING];
 
-        for (var i = 0; i < simpleSettings.length; i++) {
-            boolSetting(simpleSettings[i])
-        }
-        var tunicColor = getRGB();
-        document.getElementById("tunicColor").innerHTML = "Change Tunic Color" + tunicColor[3] + '<div class="colorTest" style="background-color: rgb(' + tunicColor[0] + ', ' + tunicColor[1] + ', ' + tunicColor[2] + ');"></div>'
-        var heartColor = getRGB();
-        document.getElementById("heartColor").innerHTML = "Change Heart Color" + heartColor[3] + '<div class="colorTest" style="background-color: rgb(' + heartColor[0] + ', ' + heartColor[1] + ', ' + heartColor[2] + ');"></div>'
-        var splitBarColor = getRGB();
-        document.getElementById("splitBarColor").innerHTML = "Change Split Bar Color" + splitBarColor[3] + '<div class="colorTest" style="background-color: rgb(' + splitBarColor[0] + ', ' + splitBarColor[1] + ', ' + splitBarColor[2] + ');"></div>'
-        if (document.getElementById("figurineHunt").checked) {
-            if (document.getElementById("fusions").innerHTML == "Open fusion mode" && document.getElementById("fusions").checked) {
-                var maxfigurines = 136;
-            } else if (document.getElementById("fusions").innerHTML == "Open fusion mode") {
-                var maxfigurines = 132;
-            } else if (document.getElementById("fusions").checked) {
-                var maxfigurines = 102;
-            } else {
-                var maxfigurines = 76;
-            }
-            var ped = Math.floor(Math.random() * pedSettingsFigurines.length);
-            document.getElementById("pedSettings").innerHTML = pedSettingsFigurines[ped]
-            var figurineCount = Math.floor(Math.random() * maxfigurines);
-            var maxExtra = maxfigurines - figurineCount;
-            var extraFigurineCount = Math.floor(Math.random() * maxExtra);
-            document.getElementById("requiredFigurines").innerHTML = "Required Figurines: " + figurineCount;
-            document.getElementById("extraFigurines").innerHTML = "Extra Figurines: " + extraFigurineCount;
+		var SMALL_KEYS_SETTING = Math.floor(Math.random() * SettingsKey.length);
+		document.getElementById("SMALL_KEYS_SETTING").innerHTML = "<u>Small Key:</u><br> " + SettingsKey[SMALL_KEYS_SETTING];
 
-        } else {
-            var ped = Math.floor(Math.random() * pedSettings.length);
-            document.getElementById("pedSettings").innerHTML = pedSettings[ped]
-            document.getElementById("requiredFigurines").innerHTML = "Required Figurines: 0"
-            document.getElementById("extraFigurines").innerHTML = "Extra Figurines: 0"
-            figurineCount = 0;
-            $extraFigurineCount = 0;
-        }
-        if (document.getElementById("keysanity").checked == false) {
-            boolSetting("keasy")
-        }
-    }
+		var BIG_KEYS_SETTING = Math.floor(Math.random() * SettingsKey.length);
+		document.getElementById("BIG_KEYS_SETTING").innerHTML = "<u>Big Key:</u><br> " + SettingsKey[BIG_KEYS_SETTING];
 
-    function getRGB() {
-        var r = Math.floor(Math.random() * 255)
-        var g = Math.floor(Math.random() * 255)
-        var b = Math.floor(Math.random() * 255)
-        return [r, g, b, "<br/>Red: " + r + "<br/>Green: " + g + "<br/>Blue: " + b]
-    }
+		var SHUFFLE_ELEMENTS = Math.floor(Math.random() * SettingsShuffleElements.length);
+		document.getElementById("SHUFFLE_ELEMENTS").innerHTML = "<u>Shuffle Element:</u><br> " + SettingsShuffleElements[SHUFFLE_ELEMENTS];
 
-    function boolSetting(name) {
-        var number = Math.random() < 0.5;
-        if (number == 1) {
-            document.getElementById(name).checked = true;
-        } else {
-            document.getElementById(name).checked = false;
-        }
-    }
+		var DUNGEON = Math.floor(Math.random() * SettingsNonElement.length);
+		document.getElementById("DUNGEON").innerHTML = "<u>Non Element Dungeons:</u><br>" + SettingsNonElement[DUNGEON];
+	}
+	function randomizeMS_RE() {
+		for (var i = 0; i < simpleSettingsMS_RE.length; i++) {
+			boolSetting(simpleSettingsMS_RE[i])
+		}
+		var DHC_SETTING = Math.floor(Math.random() * SettingsDHC.length);
+		document.getElementById("DHC_SETTING").innerHTML = "<u>Dark Hyrule Castle Opens:</u><br> " + SettingsDHC[DHC_SETTING];
+
+		var REQUIREMENT_ITEM = Math.floor(Math.random() * SettingsRequirementItem.length);
+		document.getElementById("REQUIREMENT_ITEM").innerHTML = "<u>Requirement Reward:</u><br> " + SettingsRequirementItem[REQUIREMENT_ITEM];
+		
+		var AD_PED = Math.floor(Math.random() * SettingsAd_ped.length);
+		document.getElementById("AD_PED").innerHTML = "<u>Dungeons Required:</u><br> " + SettingsAd_ped[AD_PED];
+
+		var SWORD_SETTING = Math.floor(Math.random() * SettingsSword.length);
+		document.getElementById("SWORD_SETTING").innerHTML = "<u>Sword Requirement:</u><br> " + SettingsSword[SWORD_SETTING];
+
+		var ELEMENT_SETTING = Math.floor(Math.random() * SettingsElement.length);
+		document.getElementById("ELEMENT_SETTING").innerHTML = "<u>Elements Required:</u><br> " + SettingsElement[ELEMENT_SETTING];
+
+	    var FigurineTotal=Math.floor(Math.random() * 137);
+		document.getElementById("FIGURINE_TOTAL").innerHTML = "<u>Figurines in world:</u><br> " + FigurineTotal;
+
+	    var FigurineCount=Math.floor(Math.random() * FigurineTotal);
+		document.getElementById("FIGURINE_COUNT").innerHTML = "<u>Figurines required:</u><br> " + FigurineCount;
+	}
+	function randomizeMS_SH() {
+		for (var i = 0; i < simpleSettingsMS_SH.length; i++) {
+			boolSetting(simpleSettingsMS_SH[i])
+		}
+		var DOJO = Math.floor(Math.random() * SettingsDojo.length);
+		document.getElementById("DOJO").innerHTML = "<u>Dojo Swordmasters:</u><br> " + SettingsDojo[DOJO];
+
+		var CUCCO_SETTING = Math.floor(Math.random() * SettingsCucco.length);
+		document.getElementById("CUCCO_SETTING").innerHTML = "<u>Cucco Minigame:</u><br> " + SettingsCucco[CUCCO_SETTING];
+
+		var GORON_SETTING = Math.floor(Math.random() * SettingsGoron.length);
+		document.getElementById("GORON_SETTING").innerHTML = "<u>Goron Merchant:</u><br> " + SettingsGoron[GORON_SETTING];
+	}
+	function randomizeWS_GL(){
+		var OPENWORLD = Math.floor(Math.random() * SettingsOpenWorld.length);
+		document.getElementById("OPENWORLD").innerHTML = "<u>World obstacles are:</u><br> " + SettingsOpenWorld[OPENWORLD];
+
+		var ENTRANCES = Math.floor(Math.random() * SettingsEntrance.length);
+		document.getElementById("ENTRANCES").innerHTML = "<u>Goron Merchant:</u><br> " + SettingsEntrance[ENTRANCES];
+	}
+	function randomizeWS_FU(){
+		for (var i = 0; i < simpleSettingsWS_FU.length; i++) {
+			boolSetting(simpleSettingsWS_FU[i])
+		}
+		var GOLD_FUSION_SETTING = Math.floor(Math.random() * SettingsFusion.length);
+		document.getElementById("GOLD_FUSION_SETTING").innerHTML = "<u>Gold Fusions are:</u><br> " + SettingsFusion[GOLD_FUSION_SETTING];
+
+		var RED_FUSION_SETTING = Math.floor(Math.random() * SettingsFusion.length);
+		document.getElementById("RED_FUSION_SETTING").innerHTML = "<u>Red Fusions are:</u><br> " + SettingsFusion[RED_FUSION_SETTING];
+
+		var BLUE_FUSION_SETTING = Math.floor(Math.random() * SettingsFusion.length);
+		document.getElementById("BLUE_FUSION_SETTING").innerHTML = "<u>Blue Fusions are:</u><br> " + SettingsFusion[BLUE_FUSION_SETTING];
+
+		var GREEN_FUSION_SETTING = Math.floor(Math.random() * SettingsFusion.length);
+		document.getElementById("GREEN_FUSION_SETTING").innerHTML = "<u>Green Fusions are:</u><br> " + SettingsFusion[GREEN_FUSION_SETTING];
+
+		var FUSION_SKIPS = Math.floor(Math.random() * SettingsFusionSkip.length);
+		document.getElementById("FUSION_SKIPS").innerHTML = "<u>Skip Fusion Cutscenes:</u><br> " + SettingsFusionSkip[FUSION_SKIPS];
+
+	}
+	function randomizeWS_SU(){
+		for (var i = 0; i < simpleSettingsWS_SU.length; i++) {
+			boolSetting(simpleSettingsWS_SU[i])
+		}
+	}
+	function randomizeWS_WC(){
+		for (var i = 0; i < simpleSettingsWS_WC.length; i++) {
+			boolSetting(simpleSettingsWS_WC[i])
+		}
+	}
+	function randomizeWS_DW(){
+		for (var i = 0; i < simpleSettingsWS_DW.length; i++) {
+			boolSetting(simpleSettingsWS_DW[i])
+		}
+	}
+	function randomizeLS_LR(){
+		for (var i = 0; i < simpleSettingsLS_LR.length; i++) {
+			boolSetting(simpleSettingsLS_LR[i])
+		}
+		var ACCESSIBILITY = Math.floor(Math.random() * SettingsAccessibility.length);
+		document.getElementById("ACCESSIBILITY").innerHTML = "<u>Reachable:</u><br> " + SettingsAccessibility[ACCESSIBILITY];
+
+		var GRABBABLE = Math.floor(Math.random() * SettingsGrabbable.length);
+		document.getElementById("GRABBABLE").innerHTML = "<u>Grab items from a distance:</u><br> " + SettingsGrabbable[GRABBABLE];
+
+	}
+	function randomizeLS_WE(){
+		var BOMBWEAPON = Math.floor(Math.random() * SettingsWeaponBoss.length);
+		document.getElementById("BOMBWEAPON").innerHTML = "<u>Bombs:</u><br> " + SettingsWeaponBoss[BOMBWEAPON];
+
+		var BOWWEAPON = Math.floor(Math.random() * SettingsWeaponBoss.length);
+		document.getElementById("BOWWEAPON").innerHTML = "<u>Bow:</u><br> " + SettingsWeaponBoss[BOWWEAPON];
+
+		var GUSTWEAPON = Math.floor(Math.random() * SettingsWeaponNoBoss.length);
+		document.getElementById("GUSTWEAPON").innerHTML = "<u>Gust Jar:</u><br> " + SettingsWeaponNoBoss[GUSTWEAPON];
+
+		var LAMPWEAPON = Math.floor(Math.random() * SettingsWeaponNoBoss.length);
+		document.getElementById("LAMPWEAPON").innerHTML = "<u>Lantern:</u><br> " + SettingsWeaponNoBoss[LAMPWEAPON];
+	}
+	function randomizeLS_RT(){
+		var MITTSMONEY_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("MITTSMONEY_SETTING").innerHTML = "<u>Mole Mitts farm Infinite Rupees:</u><br> " + SettingsTrick[MITTSMONEY_SETTING];
+
+		var GUARANTEED_BARLOV = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("GUARANTEED_BARLOV").innerHTML = "<u>Barlov farm Infinite Rupees:</u><br> " + SettingsTrick[GUARANTEED_BARLOV];
+
+		var BLOWDUST_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("BLOWDUST_SETTING").innerHTML = "<u>Bombs blow away dust:</u><br> " + SettingsTrick[BLOWDUST_SETTING];
+
+		var MUSHROOM_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("MUSHROOM_SETTING").innerHTML = "<u>Crenel mushroom grab with Gust jar:</u><br> " + SettingsTrick[MUSHROOM_SETTING];
+
+		var ARROWBREAK_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("ARROWBREAK_SETTING").innerHTML = "<u>Light Arrows break objects:</u><br> " + SettingsTrick[ARROWBREAK_SETTING];
+
+		var BOBOMBS_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("BOBOMBS_SETTING").innerHTML = "<u>Use Bobombs to destroy walls:</u><br> " + SettingsTrick[BOBOMBS_SETTING];
+
+		var LIKELIKE_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("LIKELIKE_SETTING").innerHTML = "<u>LikeLike cave without a Sword:</u><br> " + SettingsTrick[LIKELIKE_SETTING];
+
+		var GUARDSKIP_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("GUARDSKIP_SETTING").innerHTML = "<u>Skip Town guard using Boots:</u><br> " + SettingsTrick[GUARDSKIP_SETTING];
+
+		var CRENELBEAM_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("CRENELBEAM_SETTING").innerHTML = "<u>Use Beam to hit switch on Mt Crenel:</u><br> " + SettingsTrick[CRENELBEAM_SETTING];
+
+		var DTBEETLE_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("DTBEETLE_SETTING").innerHTML = "<u>Use DownThrust to flip Spikey Beetles:</u><br> " + SettingsTrick[DTBEETLE_SETTING];
+
+		var DARKROOMS_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("DARKROOMS_SETTING").innerHTML = "<u>Dark Rooms without a Lantern:</u><br> " + SettingsTrick[DARKROOMS_SETTING];
+
+		var EXTENDCAPE_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("EXTENDCAPE_SETTING").innerHTML = "<u>Tricky Cape jumps across water:</u><br> " + SettingsTrick[EXTENDCAPE_SETTING];
+
+		var LAKEMINISH_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("LAKEMINISH_SETTING").innerHTML = "<u>Minish in Lake without Boots:</u><br> " + SettingsTrick[LAKEMINISH_SETTING];
+
+		var CABINSWIM_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("CABINSWIM_SETTING").innerHTML = "<u>Swim to Cabin without lilypad:</u><br> " + SettingsTrick[CABINSWIM_SETTING];
+
+		var CLOUDSKILL_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("CLOUDSKILL_SETTING").innerHTML = "<u>Kill Cloud Sharks without Weapons:</u><br> " + SettingsTrick[CLOUDSKILL_SETTING];
+
+		var POWJUMP_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("POWJUMP_SETTING").innerHTML = "<u>PoW 2F is clearable without a Cane:</u><br> " + SettingsTrick[POWJUMP_SETTING];
+
+		var POWPOTOOL_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("POWPOTOOL_SETTING").innerHTML = "<u>Pot Puzzle without Power Bracelets:</u><br> " + SettingsTrick[POWPOTOOL_SETTING];
+
+		var DHCCANON_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("DHCCANON_SETTING").innerHTML = "<u>DHC Canon rooms without Four Sword:</u><br> " + SettingsTrick[DHCCANON_SETTING];
+
+		var DHCJOSTLE_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("DHCJOSTLE_SETTING").innerHTML = "<u>DHC Pressure Pads without Four Sword:</u><br> " + SettingsTrick[DHCJOSTLE_SETTING];
+
+		var DHCSWITCHES_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("DHCSWITCHES_SETTING").innerHTML = "<u>DHC Switches without Four Sword:</u><br> " + SettingsTrick[DHCSWITCHES_SETTING];
+
+		var FOWPOT_SETTING = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("FOWPOT_SETTING").innerHTML = "<u>FoW Pot item early using the Gust Jar:</u><br> " + SettingsTrick[FOWPOT_SETTING];
+	}
+	function randomizeIP_GL(){
+		for (var i = 0; i < simpleSettingsIP_GL.length; i++) {
+			boolSetting(simpleSettingsIP_GL[i])
+		}
+
+		var ITEM_POOL = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("ITEM_POOL").innerHTML = "<u>Item Pool:</u><br> " + SettingsItemPool[ITEM_POOL];
+
+		var FIREROD = Math.floor(Math.random() * SettingsTrick.length);
+		document.getElementById("FIREROD").innerHTML = "<u>Firerod:</u><br> " + SettingsFirerod[FIREROD];
+	}
+	function randomizeIP_PR(){
+		for (var i = 0; i < simpleSettingsIP_PR.length; i++) {
+			boolSetting(simpleSettingsIP_PR[i])
+		}
+	}
+	function randomizeIP_KP(){
+		var GOLD1MULTIPLIER = Math.floor(Math.random() * SettingsGold1Mult.length);
+		document.getElementById("GOLD1MULTIPLIER").innerHTML = "<u>Cloud Tops Kinstone pack size:</u><br> " + SettingsGold1Mult[GOLD1MULTIPLIER];
+
+		var GOLD2MULTIPLIER = Math.floor(Math.random() * SettingsGold2Mult.length);
+		document.getElementById("GOLD2MULTIPLIER").innerHTML = "<u>Swamp Kinstone pack size:</u><br> " + SettingsGold2Mult[GOLD2MULTIPLIER];
+
+		var REDWMULTIPLIER = Math.floor(Math.random() * SettingsRedWMult.length);
+		document.getElementById("REDWMULTIPLIER").innerHTML = "<u>Red W Kinstone pack size:</u><br> " + SettingsRedWMult[REDWMULTIPLIER];
+
+		var REDVMULTIPLIER = Math.floor(Math.random() * SettingsRedVMult.length);
+		document.getElementById("REDVMULTIPLIER").innerHTML = "<u>Red V Kinstone pack size:</u><br> " + SettingsRedVMult[REDVMULTIPLIER];
+
+		var REDEMULTIPLIER = Math.floor(Math.random() * SettingsRedEMult.length);
+		document.getElementById("REDEMULTIPLIER").innerHTML = "<u>Red E Kinstone pack size:</u><br> " + SettingsRedEMult[REDEMULTIPLIER];
+
+		var BLUELMULTIPLIER = Math.floor(Math.random() * SettingsBlueLMult.length);
+		document.getElementById("BLUELMULTIPLIER").innerHTML = "<u>Blue L Kinstone pack size:</u><br> " + SettingsBlueLMult[BLUELMULTIPLIER];
+
+		var BLUESMULTIPLIER = Math.floor(Math.random() * SettingsBlueSMult.length);
+		document.getElementById("BLUESMULTIPLIER").innerHTML = "<u>Blue S Kinstone pack size:</u><br> " + SettingsBlueSMult[BLUESMULTIPLIER];
+
+		var GREENCMULTIPLIER = Math.floor(Math.random() * SettingsGreenCMult.length);
+		document.getElementById("GREENCMULTIPLIER").innerHTML = "<u>Green C Kinstone pack size:</u><br> " + SettingsGreenCMult[GREENCMULTIPLIER];
+
+		var GREENGMULTIPLIER = Math.floor(Math.random() * SettingsGreenGMult.length);
+		document.getElementById("GREENGMULTIPLIER").innerHTML = "<u>Green G Kinstone pack size:</u><br> " + SettingsGreenGMult[GREENGMULTIPLIER];
+
+		var GREENPMULTIPLIER = Math.floor(Math.random() * SettingsGreenPMult.length);
+		document.getElementById("GREENPMULTIPLIER").innerHTML = "<u>Green P Kinstone pack size:</u><br> " + SettingsGreenPMult[GREENPMULTIPLIER];
+
+	}
+	function randomizeIP_KC(){
+		var KEYDWSMULTIPLIER = Math.floor(Math.random() * SettingsKeyDWSMult.length);
+		document.getElementById("KEYDWSMULTIPLIER").innerHTML = "<u>Deepwood Shrine Keychain size:</u><br> " + SettingsKeyDHCMult[KEYDWSMULTIPLIER];
+		var KEYCOFMULTIPLIER = Math.floor(Math.random() * SettingsKeyCOFMult.length);
+		document.getElementById("KEYCOFMULTIPLIER").innerHTML = "<u>Cave of Flames Keychain size:</u><br> " + SettingsKeyCOFMult[KEYCOFMULTIPLIER];
+		var KEYFOWMULTIPLIER = Math.floor(Math.random() * SettingsKeyFOWMult.length);
+		document.getElementById("KEYFOWMULTIPLIER").innerHTML = "<u>Fortress of Winds Keychain size:</u><br> " + SettingsKeyFOWMult[KEYFOWMULTIPLIER];
+		var KEYTODMULTIPLIER = Math.floor(Math.random() * SettingsKeyTODMult.length);
+		document.getElementById("KEYTODMULTIPLIER").innerHTML = "<u>Temple of Droplets Keychain size:</u><br> " + SettingsKeyTODMult[KEYTODMULTIPLIER];
+		var KEYRCMULTIPLIER = Math.floor(Math.random() * SettingsKeyRCMult.length);
+		document.getElementById("KEYRCMULTIPLIER").innerHTML = "<u>Royal Crypt Keychain size:</u><br> " + SettingsKeyRCMult[KEYRCMULTIPLIER];
+		var KEYPOWMULTIPLIER = Math.floor(Math.random() * SettingsKeyPOWMult.length);
+		document.getElementById("KEYPOWMULTIPLIER").innerHTML = "<u>Palace of Winds Keychain size:</u><br> " + SettingsKeyPOWMult[KEYPOWMULTIPLIER];
+		var KEYDHCMULTIPLIER = Math.floor(Math.random() * SettingsKeyDHCMult.length);
+		document.getElementById("KEYDHCMULTIPLIER").innerHTML = "<u>Dark Hyrule Castle Keychain size:</u><br> " + SettingsKeyDHCMult[KEYDHCMULTIPLIER];
+
+	}
+	function randomizeGA_DI(){
+		for (var i = 0; i < simpleSettingsGA_DI.length; i++) {
+			boolSetting(simpleSettingsGA_DI[i])
+		}
+		var THREE_HEART = Math.floor(Math.random() * SettingsThreeHeart.length);
+		document.getElementById("THREE_HEART").innerHTML = "<u>Maximum Health:</u><br> " + SettingsThreeHeart[THREE_HEART];
+
+		var DAMAGE_MULTI = Math.floor(Math.random() * SettingsDamageMulti.length);
+		document.getElementById("DAMAGE_MULTI").innerHTML = "<u>Damage Multiplier:</u><br> " + SettingsDamageMulti[DAMAGE_MULTI];
+
+	}
+	function randomizeGA_IM(){
+		for (var i = 0; i < simpleSettingsGA_IM.length; i++) {
+			boolSetting(simpleSettingsGA_IM[i])
+
+		var BOOTS_L = Math.floor(Math.random() * SettingsBootsL.length);
+		document.getElementById("BOOTS_L").innerHTML = "<u>Boots on L:</u><br> " + SettingsBootsL[BOOTS_L];
+
+		}
+	}
+	function randomizeGA_EX(){
+		for (var i = 0; i < simpleSettingsGA_EX.length; i++) {
+			boolSetting(simpleSettingsGA_EX[i])
+		}
+	}
+	function randomizeCO_MSE(){
+		var MUSIC_SETTING = Math.floor(Math.random() * SettingsMusic.length);
+		document.getElementById("MUSIC_SETTING").innerHTML = "<u>Music:</u><br> " + SettingsMusic[MUSIC_SETTING];
+
+		var HEALTH_BEEP = Math.floor(Math.random() * 256);
+		document.getElementById("HEALTH_BEEP").innerHTML = "<u>Low Health Beep:</u><br> " + HEALTH_BEEP;
+	}
+	function randomizeCO_CO(){
+		for (var i = 0; i < simpleSettingsCO_CO.length; i++) {
+			boolSetting(simpleSettingsCO_CO[i])
+		}
+	}
+	function randomizeCO_HE(){
+		for (var i = 0; i < simpleSettingsCO_HE.length; i++) {
+			boolSetting(simpleSettingsCO_HE[i])
+		}
+		var heartColor = getRGB();
+        document.getElementById("HeartColor").innerHTML = "<u>Heart Color:</u><br>" + heartColor[3];
+        document.getElementById("HeartColor2").innerHTML = '<p class="colorTest" style=" background-color: rgb(' + heartColor[0] + ', ' + heartColor[1] + ', ' + heartColor[2] + ');">  </p>';
+
+	}
+	function randomizeCO_HO(){
+		var heartOutlineColor = getRGB();
+        document.getElementById("HeartOutlineColor").innerHTML = "<u>Heart Outline Color:</u><br>" + heartOutlineColor[3];
+        document.getElementById("HeartOutlineColor2").innerHTML = '<p class="colorTest" style=" background-color: rgb(' + heartOutlineColor[0] + ', ' + heartOutlineColor[1] + ', ' + heartOutlineColor[2] + ');">  </p>';
+	}
+	function randomizeCO_TU(){
+		var TunicColor = getRGB();
+        document.getElementById("TunicColor").innerHTML = "<u>Tunic Color:</u><br>" + TunicColor[3];
+        document.getElementById("TunicColor2").innerHTML = '<p class="colorTest" style=" background-color: rgb(' + TunicColor[0] + ', ' + TunicColor[1] + ', ' + TunicColor[2] + ');">  </p>';
+	}
+	function randomizeCO_SB(){
+		var SplitBarColor = getRGB();
+        document.getElementById("SplitBarColor").innerHTML = "<u>Split Bar Color:</u><br>" + SplitBarColor[3];
+        document.getElementById("SplitBarColor2").innerHTML = '<p class="colorTest" style=" background-color: rgb(' + SplitBarColor[0] + ', ' + SplitBarColor[1] + ', ' + SplitBarColor[2] + ');">  </p>';
+	}
+	function randomizeCO_FO() {
+        var FOLLOWER_SETTING = Math.floor(Math.random() * SettingsFollower.length);
+        document.getElementById("FOLLOWER_SETTING").innerHTML = "Follower: " + SettingsFollower[FOLLOWER_SETTING]
+	}
+	function randomize() {
+		randomizeMS_DS();
+		randomizeMS_RE();
+		randomizeMS_SH();
+		randomizeWS_GL();
+		randomizeWS_FU();
+		randomizeWS_SU();
+		randomizeWS_WC();
+		randomizeWS_DW();
+		randomizeLS_LR();
+		randomizeLS_WE();
+		randomizeLS_RT();
+		randomizeIP_GL();
+		randomizeIP_PR();
+		randomizeIP_KP();
+		randomizeGA_DI();
+		randomizeIP_KC();
+		randomizeGA_IM();
+		randomizeGA_EX();
+		randomizeCO_MSE();
+		randomizeCO_CO();
+		randomizeCO_HE();
+		randomizeCO_HO();
+		randomizeCO_TU();
+		randomizeCO_SB();
+		randomizeCO_FO();
+	}
+	function getRGB() {
+		var r = Math.floor(Math.random() * 256)
+		var g = Math.floor(Math.random() * 256)
+		var b = Math.floor(Math.random() * 256)
+		return [r, g, b, " Red: " + r + " Green: " + g + " Blue: " + b]
+	}
+
+	function boolSetting(name) {
+		var number = Math.random() < 0.5;
+		if (number == 1) {
+			document.getElementById(name).checked = true;
+		} else {
+			document.getElementById(name).checked = false;
+		}
+	}
 </script>
